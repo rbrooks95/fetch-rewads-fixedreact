@@ -1,1 +1,1 @@
-# Fetch-rewards-in-react
+# fetch-rewards-react
