@@ -16,22 +16,20 @@ function DropDown() {
   };
   fetchData();
   return (
-    <form id="form">
-      <div className="form-group">
-        <label>Occupation</label>
-        <select
-          placeholder="pick"
-          required
-          name="occupation"
-          onChange={() => {
-            const choice = this.response.data.occupations;
-            setJob(choice);
-          }}
-        >
-          <option value={fetchData}> {fetchData}</option>
-        </select>
-      </div>
-    </form>
+    <div className="form-group">
+      <label>Occupation</label>
+      <select
+        placeholder="pick"
+        required
+        name="occupation"
+        onChange={() => {
+          const choice = this.response.data.occupations;
+          setJob(choice);
+        }}
+      >
+        <option value={fetchData}> {fetchData}</option>
+      </select>
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import FormInput from "./components/form-input/FormInput";
-import DropDown from "./dropDown";
+import DropDown from "./components/drop-down/DropDown";
+import "./App.css";
 
 const App = () => (
   <div className="container">
