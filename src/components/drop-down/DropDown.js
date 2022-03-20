@@ -1,20 +1,20 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function DropDown() {
-  const [job, setJob] = useState("");
+  const [jobs, setJobs] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        "https://frontend-take-home.fetchrewards.com/form"
+      );
 
-  const fetchData = async () => {
-    const response = await axios.get(
-      "https://frontend-take-home.fetchrewards.com/form"
-    );
+      setJobs(response.data.occupations);
+    };
+    fetchData();
+  }, []);
 
-    for (let jobs of response.data.occupations) {
-      console.log(jobs);
-      return jobs;
-    }
-  };
-  fetchData();
+  console.log(jobs);
   return (
     <div className="form-group">
       <label>Occupation</label>
@@ -24,10 +24,14 @@ function DropDown() {
         name="occupation"
         onChange={() => {
           const choice = this.response.data.occupations;
-          setJob(choice);
         }}
       >
-        <option value={fetchData}> {fetchData}</option>
+        <option value="" disabled selected hidden>
+          Choose a Occupation
+        </option>
+        {jobs.map((job) => {
+          return <option value={job}>{job}</option>;
+        })}
       </select>
     </div>
   );
